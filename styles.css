@@ -97,15 +97,20 @@ div#logo {
 
 div#logo > div {
   height: 128px;
+  background-position-x: center;
+  background-size: contain;
+  background-repeat: no-repeat
 }
 
 div.lg-michael {
   width: 468px;
+  background-position-y: bottom;
   background-image: url('/gfx/lg_michael_x128.png');
 }
 
 div.lg-fedora {
   width: 416px;
+  background-position-y: top;
   background-image: url('/gfx/lg_fedora_x128.png');
 }
 
