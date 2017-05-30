@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <script src='redirect.js'></script>
+
+  <title>Michael Fedora's Home</title>
+  <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic'>
+  <link rel='stylesheet' href='//fonts.googleapis.com/icon?family=Material+Icons'>
+
+  <script src='//unpkg.com/vue/dist/vue.js'></script>
+  <!--<script src='//unpkg.com/vue/dist/vue.min.js'></script>-->
+  <script src='//unpkg.com/vue-router/dist/vue-router.js'></script>
+  <script src='//unpkg.com/vue-material'></script>
+  <link rel='stylesheet' href='//unpkg.com/vue-material/dist/vue-material.css'>
+
+  <link rel='stylesheet' href='/styles.css'>
+  <link rel='stylesheet' href='index.css'>
+  <script src='/project-data.js'></script>
+</head>
+<body>
+  <div id='app'>
+
+    <md-toolbar class='md-dense shadow'>
+      <md-button href='/' class='my-icon-button'>
+        <md-avatar>
+          <img src='https:////avatars3.githubusercontent.com/u/13156131?v=3&s=40'>
+        </md-avatar>
+      </md-button>
+
+      <a href='/' class='md-title' style='flex: 1'>Michael Fedora</a>
+
+      <div>
+        <md-button href='https://github.com/MichaelFedora/' class='my-icon-button'>
+          <md-avatar style='padding: 16'>
+            <svg aria-hidden="true" height="24" version="1.1" viewBox="0 0 16 16" width="24"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+          </md-avatar>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <div id='logo'>
+      <div class='lg-michael'></div>
+      <div class='lg-fedora'></div>
+    </div>
+
+    <div id='body'>
+      <md-card>
+        <md-card-header>
+          <div class='md-title'>Hello there!</div>
+        </md-card-header>
+        <md-card-content>
+          <p>
+            I'm Michael Fedora, a self-taught coder, artist, and inventor. Welcome to my home!
+          </p>
+          <p>
+            Up top are a couple links to my online profiles,
+            and in the card below is a portfolio of projects I've done,
+            which contains things I've created for myself or other clients,
+            including companies I've worked for.
+          </p>
+        </md-card-content>
+      </md-card>
+
+      <md-card>
+        <md-card-header>
+          <div class='md-title'>Code Portfolio</div>
+        </md-card-header>
+
+        <md-card-content style='box-sizing: content-box'>
+          <md-tabs md-right>
+            <md-tab id='featured' md-label='featured'>
+              <md-layout md-gutter id='projects-layout' md-align='center'>
+                <a v-for='project of featuredProjects' :title='project.name' :href='"/projects/" + project.name'>
+                  <md-image :md-src='getImageSrc(project.name)' :alt='project.name'></md-image>
+                </a>
+              </md-layout>
+            </md-tab>
+
+            <md-tab id='everything' md-label='everything'>
+              <md-layout md-gutter id='projects-layout' md-align='center'>
+                <a v-for='project of projects' :title='project.name' :href='"/projects/" + project.name'>
+                  <md-image :md-src='getImageSrc(project.name)' :alt='project.name'></md-image>
+                </a>
+              </md-layout>
+            </md-tab>
+          </md-tabs>
+        </md-card-content>
+      </md-card>
+    </div>
+
+    <div id='footer'>
+      <div id='footer-inner'>
+        <span>Copyright (c) 2017, Michael Fedora, all rights reserved</span>
+        <span>Made with <a href='https://vuejs.org/'>Vue.js</a></span>
+      </div>
+    </div>
+  </div>
+
+  <div id='bg' class='no-interp'>
+    <div class='bg bg-mountains'>
+      <div class='bg bg-inner-mountains'></div>
+    </div>
+    <div class='bg bg-foreground'></div>
+    <div class='bg bg-clouds'></div>
+  </div>
+  <script src='app.js'></script>
+</body>
+</html>
