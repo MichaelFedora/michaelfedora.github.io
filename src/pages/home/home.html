@@ -1,0 +1,44 @@
+<div id='home'>
+  <md-card>
+    <md-card-header>
+      <div class='md-title'>Hello there!</div>
+    </md-card-header>
+    <md-card-content>
+      <p>
+        I'm Michael Fedora, a self-taught coder, artist, and inventor. Welcome to my home!
+      </p>
+      <p>
+        Up top are a couple links to my online profiles,
+        and in the card below is a portfolio of projects I've done,
+        which contains things I've created for myself or other clients,
+        including companies I've worked for.
+      </p>
+    </md-card-content>
+  </md-card>
+
+  <md-card>
+    <md-card-header>
+      <div class='md-title'>Code Portfolio</div>
+    </md-card-header>
+
+    <md-card-content style='box-sizing: content-box'>
+      <md-tabs md-right>
+        <md-tab id='featured' md-label='featured'>
+          <md-layout md-gutter id='projects-layout' md-align='center'>
+            <router-link v-for='project of featuredProjects' :key='project.name' :title='project.name' :to='"/projects/" + project.name'>
+              <md-image :md-src='getImageSrc(project.name)' :alt='project.name'></md-image>
+            </router-link>
+          </md-layout>
+        </md-tab>
+
+        <md-tab id='everything' md-label='everything'>
+          <md-layout md-gutter id='projects-layout' md-align='center'>
+            <a v-for='project of projects' :title='project.name' :href='"/projects/" + project.name'>
+              <md-image :md-src='getImageSrc(project.name)' :alt='project.name'></md-image>
+            </a>
+          </md-layout>
+        </md-tab>
+      </md-tabs>
+    </md-card-content>
+  </md-card>
+</div>

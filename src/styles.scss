@@ -43,10 +43,10 @@ div#body {
 
 div#body > * {
   width: 80%;
-}
 
-div#body > *:not(:last-child) {
-  margin-bottom: 1rem;
+  > *:not(:last-child) {
+    margin-bottom: 1rem;
+  }
 }
 
 div#footer {
@@ -105,13 +105,13 @@ div#logo > div {
 div.lg-michael {
   width: 468px;
   background-position-y: bottom;
-  background-image: url('/gfx/lg_michael_x128.png');
+  background-image: url('/assets/gfx/lg_michael_x128.png');
 }
 
 div.lg-fedora {
   width: 416px;
   background-position-y: top;
-  background-image: url('/gfx/lg_fedora_x128.png');
+  background-image: url('/assets/gfx/lg_fedora_x128.png');
 }
 
 /*
@@ -142,12 +142,12 @@ div.bg {
 }
 
 div.bg-foreground {
-  background-image: url('/gfx/pixalart_ultrawide_foreground.png');
+  background-image: url('/assets/gfx/pixalart_ultrawide_foreground.png');
 }
 
 div.bg-mountains {
   background-position-y: 90%;
-  background-image: url('/gfx/pixalart_ultrawide_mountains.png');
+  background-image: url('/assets/gfx/pixalart_ultrawide_mountains.png');
 }
 
 div.bg-inner-mountains {
@@ -162,7 +162,7 @@ div.bg-clouds {
   background-size: 50%;
   background-repeat: repeat-x;
   background-position-y: 0;
-  background-image: url('/gfx/pixalart_ultrawide_clouds.png');
+  background-image: url('/assets/gfx/pixalart_ultrawide_clouds.png');
   animation-duration: 240s;
   animation-name: wind;
   animation-iteration-count: infinite;
