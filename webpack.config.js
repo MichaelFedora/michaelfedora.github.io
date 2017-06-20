@@ -36,6 +36,7 @@ module.exports = function(env) { return {
         NODE_ENV: JSON.stringify(env)
       }
     }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       names: 'vendor',
       minChunks: (module) => {
