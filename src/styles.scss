@@ -29,6 +29,22 @@ a.md-title:hover {
   text-decoration: none !important;
 }
 
+div.md-avatar.my-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  > div.so {
+    height: 30px;
+    width: 25px;
+    margin: 0;
+
+    display: inline-block;
+    text-indent: -9999em;
+    background-image: url("https://cdn.sstatic.net/Sites/stackoverflow/img/sprites.svg");
+    background-position: 0 -500px;
+  }
+}
+
 /*
  * body
  */
@@ -177,41 +193,4 @@ div.bg-clouds {
   to {
     left: 0%;
   }
-}
-
-/*
- * Project layout
- */
-div.md-layout#projects-layout > a,
-div.md-layout#projects-layout > button {
-  position: relative;
-  display: block;
-  padding: 0;
-}
-
-div.md-layout#projects-layout > a img,
-div.md-layout#projects-layout > button img {
-  max-height: 25vmin;
-}
-
-div.md-layout#projects-layout > a::after,
-div.md-layout#projects-layout > button::after {
-  content: '';
-  z-index: -1;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-
-  box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.6);
-
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-}
-
-div.md-layout#projects-layout > button:hover::after,
-div.md-layout#projects-layout > a:hover::after {
-  opacity: 1;
 }

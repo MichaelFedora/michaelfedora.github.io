@@ -11,7 +11,6 @@ var inject = require('gulp-js-text-inject'); // inject html into js files
 
 var tsc = require('gulp-typescript');
 var tsProject = tsc.createProject('tsconfig.json'); // compile es6 to es5
-var uglify = require('gulp-uglify');
 var sass = require('gulp-sass'); // compile sass to css
 
 var del = require('del'); // delete files (clean)
@@ -87,20 +86,12 @@ gulp.task('bundle:prod', () => {
           .pipe(gulp.dest(destBuild));
 });
 
-
-gulp.task('uglify', () => {
-  return gulp.src(destBuild + '/**/*.js')
-            .pipe(plumber())
-            .pipe(uglify())
-            .pipe(gulp.dest(destBuild));
-});
-
 gulp.task('tidy', () => {
   return del(destStage);
 })
 
 gulp.task('build', (cb) => sequence('clean:light', ['tsc', 'sass', 'html', 'index', 'assets'], 'inject:stage', 'bundle', 'tidy', cb)); // build everything (don't uglify)
-gulp.task('build:prod', (cb) => sequence('clean:light', ['tsc', 'sass', 'html', 'index', 'assets'], 'inject:stage', 'bundle:prod', 'uglify', 'tidy', cb)); // build everything
+gulp.task('build:prod', (cb) => sequence('clean:light', ['tsc', 'sass', 'html', 'index', 'assets'], 'inject:stage', 'bundle:prod', 'tidy', cb)); // build everything
 
 gulp.task('watch', (cb) => {
   gulp.watch('src/**/*.js', ['tsc']);

@@ -1,0 +1,95 @@
+div#home > div#intro a {
+
+  font-weight: 500;
+
+  &.angular {
+    color: #f44336;
+    &:visited { color: #f44336; }
+    &:hover { color: #c62828; }
+  }
+
+  &.vue {
+    color: #41b883;
+    &:visited { color: #41b883; }
+    &:hover { color: #349268; }
+  }
+
+  &.ionic {
+    color: #2196F3;
+    &:visited { color: #2196F3; }
+    &:hover { color: #0277BD; }
+  }
+
+  &.cordova {
+    color: #607D8B;
+    &:visited { color: #607D8B; }
+    &:hover { color: #37474F; }
+  }
+
+  &.nodejs {
+    color: #43853d;
+    &:visited { color: #43853d; }
+    &:hover { color: #31632d; }
+  }
+
+  &.express {
+    color: #03A9F4;
+    &:visited { color: #03A9F4; }
+    &:hover { color: #0277BD; }
+  }
+
+  &.rethinkdb {
+    color: #1b5062;
+    &:visited { color: #1b5062; }
+    &:hover { color: #2e829e; }
+  }
+
+  &.git {
+    color: #FF5722;
+    &:visited { color: #FF5722; }
+    &:hover { color: #D84315; }
+  }
+
+  &.code {
+    color: #373277;
+    &:visited { color: #373277; }
+    &:hover {color: #423c8e; }
+  }
+}
+
+/*
+ * Project layout
+ */
+div.md-layout#projects-layout > a,
+div.md-layout#projects-layout > button {
+  position: relative;
+  display: block;
+  padding: 0;
+}
+
+div.md-layout#projects-layout > a img,
+div.md-layout#projects-layout > button img {
+  max-height: 25vmin;
+}
+
+div.md-layout#projects-layout > a::after,
+div.md-layout#projects-layout > button::after {
+  content: '';
+  z-index: -1;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.6);
+
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+div.md-layout#projects-layout > button:hover::after,
+div.md-layout#projects-layout > a:hover::after {
+  opacity: 1;
+}

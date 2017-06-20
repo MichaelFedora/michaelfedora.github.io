@@ -37,6 +37,11 @@ module.exports = function(env) { return {
       }
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
+    new webpack.optimize.UglifyJsPlugin(env === 'production' ? {
+      compress: {
+        warnings: false
+      }
+    } : false),
     new webpack.optimize.CommonsChunkPlugin({
       names: 'vendor',
       minChunks: (module) => {
