@@ -48,13 +48,14 @@
       <div id='body'>
         <md-card>
           <md-card-header>
-            <div class='md-title'>404 Not Found</div>
-            <div class='md-subtitle'>(╯°□°）╯︵ ┻━┻</div>
+            <div class='md-title'>Re-routing...</div>
+            <div class='md-subtitle'>(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧</div>
           </md-card-header>
           <md-card-content>
             <p>
-              Looks like you were trying to go somehwere that doesn't exist! Try going
-              <a href='/'>home</a>?
+              Using hash-routes so that SPA works ¯\_(ツ)_/¯.
+              You can also go <a href='/'>home</a> if it's
+              not working.
             </p>
           </md-card-content>
         </md-card>
@@ -90,6 +91,8 @@ Vue.material.registerTheme({
 new Vue({
   el: '#main'
 });
+let a = window.location.href.substr(window.location.pathname.length - 1);
+window.location.replace(window.location.origin + '/#' + a)
     </script>
   </body>
 </html>
