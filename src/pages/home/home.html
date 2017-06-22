@@ -45,9 +45,9 @@
 
         <md-tab id='everything' md-label='everything'>
           <md-layout md-gutter id='projects-layout' md-align='center'>
-            <a v-for='project of projects' :title='project.name' :href='"/projects/" + project.name'>
+            <router-link v-for='project of projects' :key='project.name' :title='project.name' :to='"/projects/" + project.name'>
               <md-image :md-src='getImageSrc(project.name)' :alt='project.name'></md-image>
-            </a>
+            </router-link>
           </md-layout>
         </md-tab>
       </md-tabs>

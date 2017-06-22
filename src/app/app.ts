@@ -1,5 +1,5 @@
 import Vue, { ComponentOptions } from 'vue';
 
 export default {
-  name: 'not-found',
+  name: 'app',
 } as ComponentOptions<Vue>;

@@ -1,11 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import {
-  HomePage,
-  ProjectPage,
-  NotFoundPage,
-} from './pages';
+import HomePage from './pages/home/home';
+import ProjectPage from './pages/project/project';
+import NotFoundPage from './pages/not-found/not-found';
 
 Vue.use(VueRouter);
 

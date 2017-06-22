@@ -6,6 +6,7 @@ export interface ProjectDetail {
 
 export interface Project {
   name: string;
+  link: string;
   caption: string;
   tags: string[];
   description: string;
@@ -16,6 +17,7 @@ export interface Project {
 export const ProjectData: Project[] = [
   {
     name: 'michaelfedora.github.io',
+    link: 'https://michaelfedora.github.io',
     caption: 'A website for myself',
     tags: [ 'Vue.js' ],
     description: 'Finally made the time to make my own website. Sure, maybe it won\'t win awards, but it\'s me, and I quite like it!',
@@ -23,13 +25,16 @@ export const ProjectData: Project[] = [
     ]
   },
   {
-    name: 'crowfall.wiki',
+    name: 'malekai.network',
+    link: 'https://test.crowfall.wiki',
     featured: true,
-    caption: 'An unofficial Wiki for Crowfall',
-    tags: [ 'Angular2', 'Express', 'Node.js' ],
-    description: 'I worked with Scree to make a WebApp Wiki for the Crowfall MMO. '
-                  + 'We used Angular 2 for the frontend, Angular Material 2 for development'
-                  + 'styling, and a Node.js/Express/Rethinkdb for the backend',
+    caption: 'An (unofficial) network of tools for Crowfall',
+    tags: [ 'Angular', 'Vue', 'GraphQL', 'REST', 'Express', 'Node.js' ],
+    description: 'I\'m working with Scree to make a tool-network for the Crowfall MMO. '
+                  + 'What is shown below is the prototype of the Wiki WebApp, made in Angular 2 with Angular Material. '
+                  + 'We ended up switching to Vue later, as Angular seemed a little heavy handed (and scree doesn\'t like decorators) '
+                  + '; that\'s what is running now on the test site. '
+                  + 'Node.js/Express/Rethinkdb is used for the back-end, with both a REST and a GraphQL api structure. (I love GraphQL!)',
     details: [
       {
         image: 'all-empty.png',

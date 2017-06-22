@@ -1,7 +1,5 @@
 import Vue, { ComponentOptions } from 'vue';
 
-import './project.css';
-
 import projectData, { Project, ProjectDetail } from '../../project-data';
 
 interface ProjectPage extends Vue {
@@ -12,7 +10,6 @@ interface ProjectPage extends Vue {
 
 export default {
   name: 'project',
-  template: '@@import project.html',
   data() {
     return {
       project: { details: [] },

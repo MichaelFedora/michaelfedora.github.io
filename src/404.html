@@ -91,7 +91,7 @@ Vue.material.registerTheme({
 new Vue({
   el: '#main'
 });
-let a = window.location.href.substr(window.location.pathname.length - 1);
+let a = window.location.href.substr(window.location.origin.length);
 window.location.replace(window.location.origin + '/#' + a)
     </script>
   </body>

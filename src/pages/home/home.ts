@@ -1,7 +1,5 @@
 import Vue, { ComponentOptions } from 'vue';
 
-import './home.css';
-
 import projectData from '../../project-data';
 
 interface HomePage extends Vue {
@@ -11,7 +9,6 @@ interface HomePage extends Vue {
 
 export default {
   name: 'home',
-  template: '@@import home.html',
   data() {
     return {
       projects: projectData
