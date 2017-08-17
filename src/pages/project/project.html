@@ -8,7 +8,7 @@
 
       <md-card-header>
         <div class='md-title'>{{ detailed.title }}</div>
-        <div class='md-subhead'>{{ detailed.caption }}</div>
+        <div class='md-subhead' v-html='detailed.caption'></div>
       </md-card-header>
 
       <md-card-actions>
@@ -21,7 +21,7 @@
 
   <md-card v-if='project'>
     <md-card-header>
-      <md-avatar class='md-large'>
+      <md-avatar class='md-large' style='border-radius: 0'>
         <md-image :md-src='getImageSrc(project.name)' />
       </md-avatar>
       <div class='md-title'>{{ project.name }}</div>
@@ -29,12 +29,8 @@
       <router-link to='/' class='md-subhead'>&lt;- go back home</router-link>
     </md-card-header>
     <md-card-content>
-      <p>
-        {{ project.description }}
-      </p>
-      <p v-if='project.link'>
-        You can find it <a :href='project.link'>here</a>.
-      </p>
+      <p>{{ project.description }}</p>
+      <p v-if='project.link'>You can find it <a :href='project.link'>here</a>.</p>
 
       <md-layout md-gutter id='projects-layout' md-align='center' v-if='project.details.length > 0'>
         <md-button v-for='(detail, index) of project.details' :key='detail.name' @click.native='openDialog("dialog1", index)' :title='detail.title'>
@@ -49,9 +45,7 @@
       <div class='md-title'>No project found with that name</div>
     </md-card-header>
     <md-card-content>
-      <p>
-        Sorry :(
-      </p>
+      <p>Sorry :(</p>
     </md-card-content>
   </md-card>
 </div>
