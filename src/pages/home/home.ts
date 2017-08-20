@@ -1,6 +1,7 @@
 import Vue, { ComponentOptions } from 'vue';
 
 import projectData from '../../project-data';
+import clientProjectData from '../../client-project-data';
 
 interface HomePage extends Vue {
   projects: typeof projectData;
@@ -11,7 +12,8 @@ export default {
   name: 'home',
   data() {
     return {
-      projects: projectData
+      projects: projectData,
+      clientProjects: clientProjectData,
     };
   },
   computed: {
