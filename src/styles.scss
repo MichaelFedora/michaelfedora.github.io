@@ -33,6 +33,10 @@ div.md-avatar.my-center {
   display: flex;
   align-items: center;
   justify-content: center;
+  .my-icon-button {
+    margin: 6px;
+  }
+
   > div.so {
     height: 30px;
     width: 25px;
@@ -42,6 +46,7 @@ div.md-avatar.my-center {
     text-indent: -9999em;
     background-image: url("https://cdn.sstatic.net/Sites/stackoverflow/img/sprites.svg");
     background-position: 0 -500px;
+    transform: scale(0.8);
   }
 }
 
