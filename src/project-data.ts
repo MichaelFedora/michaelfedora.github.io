@@ -49,7 +49,7 @@ changes up to date within the Query string, so if you share the url it goes righ
   },
   {
     name: 'malekai.network',
-    link: 'https://test.crowfall.wiki',
+    link: 'https://beta.malekai.org',
     featured: true,
     caption: 'An (unofficial) network of tools for Crowfall',
     tags: [ 'Angular', 'Vue', 'GraphQL', 'REST', 'Express', 'Node.js' ],
