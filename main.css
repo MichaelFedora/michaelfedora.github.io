@@ -1769,40 +1769,40 @@ div.md-layout#projects-layout > div > button:hover::after,
     opacity: 1;
 }
 
-div.my-card {
+div#project div.my-card {
   display: flex;
   flex-flow: column;
   max-height: 100%;
 }
-div.my-card > .md-card-media {
+div#project div.my-card > .md-card-media {
     display: flex;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.8);
 }
-div.my-card > .md-card-media > img {
+div#project div.my-card > .md-card-media > img {
       width: auto;
       height: 100%;
 }
-div.md-button-content {
+div#project div.md-button-content {
   height: 100%;
 }
-div.md-layout#images-layout > div {
+div#project div.md-layout#images-layout > div {
   display: flex;
   justify-content: center;
 }
-div.md-layout#images-layout > div > a,
-  div.md-layout#images-layout > div > button {
+div#project div.md-layout#images-layout > div > a,
+  div#project div.md-layout#images-layout > div > button {
     position: relative;
     display: block;
     padding: 0;
     height: 128px;
 }
-div.md-layout#images-layout > div > a img,
-  div.md-layout#images-layout > div > button img {
+div#project div.md-layout#images-layout > div > a img,
+  div#project div.md-layout#images-layout > div > button img {
     max-height: 100%;
 }
-div.md-layout#images-layout > div > a::after,
-  div.md-layout#images-layout > div > button::after {
+div#project div.md-layout#images-layout > div > a::after,
+  div#project div.md-layout#images-layout > div > button::after {
     content: '';
     z-index: -1;
     position: absolute;
@@ -1814,8 +1814,8 @@ div.md-layout#images-layout > div > a::after,
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
 }
-div.md-layout#images-layout > div > button:hover::after,
-  div.md-layout#images-layout > div > a:hover::after {
+div#project div.md-layout#images-layout > div > button:hover::after,
+  div#project div.md-layout#images-layout > div > a:hover::after {
     opacity: 1;
 }
 
