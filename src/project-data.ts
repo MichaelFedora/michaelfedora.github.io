@@ -35,7 +35,7 @@ all your files for you, giving you an easier time to migrate to another Hestia h
     ]
   },
   {
-    name: 'Mercurius',
+    name: 'mercurius',
     link: 'https://michaelfedora.github.io/mercurius',
     featured: true,
     caption: 'Gaia hub explorer',

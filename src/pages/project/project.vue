@@ -61,62 +61,64 @@
 </template>
 <script src='./project.ts'></script>
 <style lang='scss'>
-div.my-card {
-  display: flex;
-  flex-flow: column;
-  max-height: 100%;
-  > .md-card-media {
+div#project {
+  div.my-card {
     display: flex;
-    justify-content: center;
-    background-color: rgba(0,0,0,0.8);
-    > img {
-      width: auto;
-      height: 100%;
+    flex-flow: column;
+    max-height: 100%;
+    > .md-card-media {
+      display: flex;
+      justify-content: center;
+      background-color: rgba(0,0,0,0.8);
+      > img {
+        width: auto;
+        height: 100%;
+      }
     }
   }
-}
 
-div.md-button-content {
-  height: 100%;
-}
+  div.md-button-content {
+    height: 100%;
+  }
 
-div.md-layout#images-layout {
-  > div {
-    display: flex;
-    justify-content: center;
-    > a,
-    > button {
-      position: relative;
-      display: block;
-      padding: 0;
-      height: 128px;
-    }
+  div.md-layout#images-layout {
+    > div {
+      display: flex;
+      justify-content: center;
+      > a,
+      > button {
+        position: relative;
+        display: block;
+        padding: 0;
+        height: 128px;
+      }
 
-    > a img,
-    > button img {
-      max-height: 100%;
-    }
+      > a img,
+      > button img {
+        max-height: 100%;
+      }
 
-    > a::after,
-    > button::after {
-      content: '';
-      z-index: -1;
+      > a::after,
+      > button::after {
+        content: '';
+        z-index: -1;
 
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
 
-      box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.6);
+        box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.6);
 
-      opacity: 0;
-      transition: opacity 0.2s ease-in-out;
-    }
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+      }
 
-    > button:hover::after,
-    > a:hover::after {
-      opacity: 1;
+      > button:hover::after,
+      > a:hover::after {
+        opacity: 1;
+      }
     }
   }
 }
