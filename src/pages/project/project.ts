@@ -1,59 +1,48 @@
-import Vue, { ComponentOptions } from 'vue';
+import Vue from 'vue';
 
 import projectData, { Project, ProjectDetail } from '../../project-data';
 
-interface ProjectPage extends Vue {
-  project: Project;
-  detailed: ProjectDetail;
-  idx: number;
-}
-
-export default {
-  name: 'project',
+export default Vue.component('project', {
   data() {
     return {
-      project: { details: [] },
-      detailed: { },
+      active: false,
+      project: null as Project,
       idx: 0
-    } as ProjectPage;
+    };
   },
-  created() {
+  computed: {
+    detailed(): ProjectDetail {
+      return (this.project && this.project.details[this.idx]) || { };
+    }
+  },
+  mounted() {
     this.project = projectData.find(a => a.name === this.$route.params.id) || null;
   },
   methods: {
-    humanizeURL: function (url) {
+    humanizeURL(url: string) {
       return url
       .replace(/^https?:\/\//, '')
       .replace(/\/$/, '')
     },
-    openDialog(ref, idx) {
-      this.detailed = this.project.details[idx];
+    openDialog(idx: number) {
       this.idx = idx;
-      (this.$refs[ref] as any).open();
+      this.active = true;
     },
-    closeDialog(ref) {
-      (this.$refs[ref] as any).close();
-    },
-    onOpen() {
-
-    },
-    onClose(type) {
-      this.detailed = { } as any;
+    onClose() {
       this.idx = 0;
     },
-    prevDetail: function() {
+    prevDetail() {
       this.idx--;
-      this.detailed = this.project.details[this.idx];
     },
-    nextDetail: function() {
+    nextDetail() {
       this.idx++;
-      this.detailed = this.project.details[this.idx];
     },
-    getImageSrc: function (name) {
+    getImageSrc(name: string) {
       return '/assets/gfx/projects/' + name + '.png';
     },
-    getDetailImageSrc: function(detailImage) { if(!detailImage) return '';
+    getDetailImageSrc(detailImage: string) {
+      if(!detailImage) return '';
       return this.project ? '/assets/gfx/projects/' + this.project.name + '/' + detailImage : '';
     }
   }
-} as ComponentOptions<ProjectPage>;
+});

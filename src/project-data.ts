@@ -16,12 +16,66 @@ export interface Project {
 
 export const ProjectData: Project[] = [
   {
+    name: 'hestia',
+    link: 'https://github.com/otorno/hestia',
+    featured: true,
+    caption: 'Pseudo-Decentralized Storage Middleware',
+    tags: [ 'Vue', 'Blockstack', 'Node.js', 'Express '],
+    description: `This service was created to replace the overly-simple Gaia hub created by Blockstack PBC by not only adding the ability
+to add plugins but also allow user-drivers, which, in contrast to using a hub-run storage backend like an Amazon S3 service, allow users
+to use their own Dropbox to store their data -- giving them more control.\n\nIn addition, it also provides an explorer and keeps track of
+all your files for you, giving you an easier time to migrate to another Hestia hub or backup the files themselves.`,
+    details: [
+      {
+        image: 'screenshot.png',
+        title: 'Overview Screenshot',
+        caption: 'This is the basic overview for what the typical end-user would see: a nice explorer with their data on it, along with'
+        + ' options to manage connections, import a migration index, and create an index as well.'
+      }
+    ]
+  },
+  {
+    name: 'Mercurius',
+    link: 'https://michaelfedora.github.io/mercurius',
+    featured: true,
+    caption: 'Gaia hub explorer',
+    tags: [ 'Vue', 'Blockstack' ],
+    description: `I created this app in order to explore what was on stored on my behalf in the official Gaia hub provided
+by Blockstack PBC. There was previously no way to easily look through all the files that are stored by applications, and so
+I created this in order to actually see what Apps were doing behind the scenes.`,
+    details: [
+      {
+        image: 'sample-interface.png',
+        title: 'Overview Screenshot',
+        caption: 'An example of what the interface looks like while it is looking up apps and populating the explorer.'
+      }
+    ]
+  },
+  {
+    name: 'ublockstack-extension',
+    link: 'https://github.com/michaelfedora/unofficial-blockstack-extension',
+    featured: true,
+    caption: 'Adds Blockstack support to the Browser',
+    tags: [ 'Vue', 'Blockstack', 'Node.js', 'Express' ],
+    description: `I made a web extension to add Blockstack support to the Web browser in a more
+native-friendly way, with popups instead of redirects. While it doesn't have feature parity with
+the official browser, it implements everything that is required for a browser to work while being
+just as easy -- if not easier -- to use.`,
+    details: [
+      {
+        image: 'screenshot-1.png',
+        title: 'Overview screenshot',
+        caption: 'A basic overview of what the different elements look like, with a sample app in the background'
+      }
+    ]
+  },
+  {
     name: 'riven-lab',
     link: 'https://michaelfedora.github.io/riven-lab',
-    featured: true,
+    featured: false,
     caption: 'A small tool to explore possible Riven builds',
     tags: [ 'Vue' ],
-    description: `I made a small website as a fun little project to explore possible Riven mods\n
+    description: `I made a small website as a fun little project to explore possible Riven mods
 in Warframe, a game by Digital Extremes. It was also a great place to learn more about how Vue's
 data reactivity works when handling very dynamic/volatile data.`,
     details: [
@@ -49,30 +103,40 @@ changes up to date within the Query string, so if you share the url it goes righ
   },
   {
     name: 'malekai.network',
-    link: 'https://beta.malekai.org',
-    featured: true,
-    caption: 'An (unofficial) network of tools for Crowfall',
-    tags: [ 'Angular', 'Vue', 'GraphQL', 'REST', 'Express', 'Node.js' ],
-    description: 'I\'m working with Scree to make a tool-network for the Crowfall MMO. '
-                  + 'What is shown below is the prototype of the Wiki WebApp, made in Angular 2 with Angular Material. '
-                  + 'We ended up switching to Vue later, as Angular seemed a little heavy handed (and scree doesn\'t like decorators) '
-                  + '; that\'s what is running now on the test site. '
-                  + 'Node.js/Express/Rethinkdb is used for the back-end, with both a REST and a GraphQL api structure. (I love GraphQL!)',
+    link: 'https://malekai.org',
+    featured: false,
+    caption: 'An (unofficial) wiki for Crowfall',
+    tags: [ 'Vue', 'GraphQL', 'REST', 'Express', 'Node.js' ],
+    description: `I worked with <a href='https://github.com/TheScree'>Scree</a> to make a Wiki for the MMO called Crowfall.
+The screenshots below are the version that I worked on, which was made using Vue.js for the frontend. Scree did most of the
+design work and I implemented it in code. The backend I made in Node.js with Express, with both a REST interface as well
+as a GraphQL interface, which was a lot of fun to implement. It also runs off RethinkDB in the background with microservices
+to generate changelogs (Scree did that part).`,
     details: [
       {
-        image: 'all-empty.png',
-        title: 'The \'all\' component',
-        caption: 'My beloved creation. It searches all the data objects within the wiki.'
+        image: 'home.png',
+        title: 'Home Page',
+        caption: 'This is the home page for malekai.org, where a beautiful splash and search bar can be seen, as well as the tabs up top.'
       },
       {
-        image: 'all-bard.png',
-        title: 'Searching for the Bard discipline',
-        caption: '..brings it up, with a formatted card to display its properties.'
+        image: 'search.png',
+        title: 'Search',
+        caption: 'This is the search in use, displaying all items that match where some text field includes your query.'
       },
       {
-        image: 'all-data_type-race_human.png',
-        title: 'Complex Searching',
-        caption: 'Filters are able to be used too, and results are based on a scoring algorithm.'
+        image: 'disciplines.png',
+        title: 'Disciplines (Category Page)',
+        caption: 'This is what a category page looks like, with a table that has filters on it and a neat overview display of each entry.'
+      },
+      {
+        image: 'discipline-upper.png',
+        title: 'Discipline (Item; Upper)',
+        caption: 'The upper half of the item page, where the item with it\'s description, attributes, and child-items are shown.'
+      },
+      {
+        image: 'discipline-lower.png',
+        title: 'Discipline (Item; Lower)',
+        caption: 'The lower half of the item page, where compatible parent-items are shown (as links), and the item\'s changelog is displayed.'
       }
     ]
   },

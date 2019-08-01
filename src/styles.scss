@@ -1,3 +1,14 @@
+@import "~vue-material/dist/theme/engine";
+
+@include md-register-theme("default", (
+  primary: md-get-palette-color(lightblue, 500), // The primary color of your application
+  accent: md-get-palette-color(deeporange, A200), // The accent or secondary color
+  warn: md-get-palette-color(deeporange, 500), // The accent or secondary color
+  theme: light
+));
+
+@import "~vue-material/dist/theme/all"; // Apply the theme
+
 .shadow {
   box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.6);
 }

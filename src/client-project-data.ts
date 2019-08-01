@@ -4,6 +4,9 @@ export interface ClientProject {
 }
 
 export const ClientProjects: ClientProject[] = [
+  { name: 'Misc. Projects for a Client', description: `
+Setup a Blockstack Core and Gaia hub node for a client, as well as forking an open source project
+and extending it with a custom API for proprietary use.`},
   { name: 'Conference Room Scheduling App', description: `
 Developed an app to handle conference room reserving from start to finish, including:
 <ul>

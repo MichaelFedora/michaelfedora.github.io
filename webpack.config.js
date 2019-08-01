@@ -1,122 +1,114 @@
-// @ts-check
-var webpack = require('webpack');
-var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ForkTsCheckWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const path = require('path');
+const ForkTsCheckWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const TsConfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const TerserJsPlugin = require('terser-webpack-plugin')
 
-module.exports = function(env) {
-  let cfg = {
-    context: __dirname,
-    entry: {
-      main: './src/main.ts',
+module.exports = (env, argv) => {
+
+  const production = (env && env.production) || (argv && argv.mode == 'production') ? true : false;
+  console.log('Environment:', (production ? 'Production' : 'Development') + '!')
+return {
+  mode: production ? 'production' : 'development',
+  entry: {
+    'main': path.resolve(__dirname, 'src', 'main.ts'),
+  },
+
+  output: {
+    path: path.resolve(__dirname, production ? 'dist' : 'build'),
+    filename: '[name].[contenthash].js',
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      {
+        test: /\.[jt]s$/,
+        loader: 'ts-loader',
+        options: { transpileOnly: true }
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          !production ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [ autoprefixer() ]
+            }
+          },
+          'sass-loader'
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          !production ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]
+      },
+      {
+        test: /\.(ttf|eot|svg|woff2?)(\?[a-z0-9=&.]+)?$/,
+        loader: 'file-loader'
+      }
+    ]
+  },
+
+  resolve: {
+    modules: ['node_modules'],
+    extensions: ['.vue', '.ts', '.js', '.json', '.html', '.scss', '.css'],
+    plugins: [new TsConfigPathsPlugin()]
+  },
+
+  devtool: production ? '' : 'inline-source-map',
+
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
     },
-    output: {
-      filename: '[name].[chunkhash].js', // [name].[chunkhash].js
-      path: path.resolve(__dirname, 'dist'),
-      publicPath: '/'
-    },
-    resolve: {
-      /*alias: {
-        'vue$': 'vue/dist/vue.esm.runtime.js'
-      },*/
-      extensions: [ '.vue', '.ts', '.js']
-    },
-    module: {
-      rules: [
-        {
-          test: /\.css$/,
-          use: ExtractTextPlugin.extract({
-            use: 'css-loader'
-          })
-        },
-        {
-          test: /\.scss$/,
-          use: ExtractTextPlugin.extract({
-            use: [ { loader: 'css-loader' }, { loader: 'sass-loader' } ]
-          })
-        },
-        {
-          test: /\.vue$/,
-          loader: 'vue-loader',
-          options: {
-            sourceMap: true,
-            loaders: {
-              'scss': 'vue-style-loader!css-loader!sass-loader',
-              'css': 'vue-style-loader!css-loader!sass-loader',
-              'ts': 'ts-loader',
-              'js': 'ts-loader'
-            },
-            cssSourceMap: true,
-          }
-        },
-        {
-          test: /\.tsx?$/,
-          loader: 'ts-loader',
-          options: {
-            transpileOnly: true
-          }
-        }
-      ],
-      loaders: [
-        {
-          test: /.html$/,
-          loader: 'html-loader'
-        }
-      ]
-    },
-    plugins: [
-      new webpack.DefinePlugin({
-        'process.env': {
-          NODE_ENV: JSON.stringify(env)
-        }
-      }),
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        minChunks: (module) => {
-          return module.context && module.context.indexOf('node_modules') !== -1;
-        }
-      }),
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'manifest'
-      }),
-      new ExtractTextPlugin({
-        filename: '[name].css',
-        allChunks: true
-      }), // [name].[chunkhash].css
-      new HtmlWebpackPlugin({
-        template: 'src/index.html',
-        chunksSortMode: 'dependency'
-      }),
-      new ForkTsCheckWebpackPlugin(),
-    ],
-    devServer: {
-      historyApiFallback: true,
-      noInfo: true
-    },
-    performance: {
-      hints: false
-    },
-    /** @type { '#eval-source-map' | '#source-map' } */
-    devtool: '#eval-source-map'
-  };
-  if(env === 'production') { console.log('Webpack: Production!');
-    cfg.devtool = '#source-map';
-    cfg.plugins = cfg.plugins.concat([
-      new webpack.optimize.ModuleConcatenationPlugin(),
-      new webpack.optimize.UglifyJsPlugin({
-        sourceMap: true,
-        compress: {
-          warnings: false
-        }
-      }),
-      new webpack.LoaderOptionsPlugin({
-        minimize: true
-      })
-    ]);
-    const vueLoader = cfg.module.rules.find(a => a.loader === 'vue-loader');
-    vueLoader.options.extractCSS = true;
-    vueLoader.options.esModule = true;
-  }
-  return cfg;
-};
+    minimizer: [ new TerserJsPlugin({ terserOptions: { mangle: { reserved: [
+                'Buffer',
+                'BigInteger',
+                'Point',
+                'ECPubKey',
+                'ECKey',
+                'sha512_asm',
+                'asm',
+                'ECPair',
+                'HDNode'
+            ] } } }) ]
+  },
+
+  plugins: [
+    new CleanWebpackPlugin(),
+    new VueLoaderPlugin(),
+    // new ForkTsCheckWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
+    }),
+    new HtmlWebpackPlugin({
+      chunks: ['main'],
+      template: 'src/index.html',
+      filename: 'index.html'
+    }),
+    new CopyWebpackPlugin([
+      { from: 'src/assets/**/*', to: 'assets/', transformPath: target => target.replace(`src${path.sep}assets${path.sep}`, '') },
+      { from: 'src/favicon.ico', to: '' },
+      { from: 'src/.nojekyll', to: '' },
+      { from: 'src/404.html', to: '' },
+      { from: 'LICENSE.txt', to: '' },
+      { from: 'README.md', to: '' },
+      { from: '.gitignore', to: '' }
+    ]),
+  ]
+}
+}
