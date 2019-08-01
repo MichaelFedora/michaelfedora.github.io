@@ -4,6 +4,7 @@
 /dist
 /tmp
 /stage
+/build
 /out-tsc
 
 # dependencies
